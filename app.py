@@ -9,6 +9,7 @@ st.set_page_config(
 )
 
 st.title("Renewable Energy Investment Dashboard")
+st.markdown("### Built by Gautam Ajith")
 st.write("Data source: World Bank World Development Indicators")
 st.write(
     "This dashboard explores renewable energy patterns across countries using World Bank data. I built it to compare renewable energy use, electricity access, CO2 emissions, and GDP Per Capita in one place."
