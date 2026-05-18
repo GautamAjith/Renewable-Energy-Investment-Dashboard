@@ -10,6 +10,9 @@ st.set_page_config(
 
 st.title("Renewable Energy Investment Dashboard")
 st.write("Data source: World Bank World Development Indicators")
+st.write(
+    "This dashboard explores renewable energy patterns across countries using World Bank data. I built it to compare renewable energy use, electricity access, CO2 emissions, and GDP Per Capita in one place."
+)
 
 
 FILES = {
@@ -87,8 +90,6 @@ def load_data():
 
     df = df.merge(metadata, on="iso3", how="left")
 
-    # Keep only actual countries.
-    # World Bank regional aggregates usually have missing Region and Income Group.
     df = df[df["Region"].notna()]
     df = df[df["Income Group"].notna()]
 
@@ -143,8 +144,9 @@ default_countries = [
     "India",
     "United States",
     "China",
-    "Germany",
-    "Brazil"
+    "Russia",
+    "United Kingdom",
+    "United Arab Emirates"
 ]
 
 default_countries = [
@@ -255,7 +257,7 @@ with col5:
     st.plotly_chart(fig_co2, use_container_width=True)
 
 
-st.subheader("Investment Opportunity View")
+st.subheader("Investment Opportunity")
 
 scatter_data = df_year.dropna(
     subset=[
