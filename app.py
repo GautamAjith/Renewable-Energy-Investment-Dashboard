@@ -106,7 +106,6 @@ def load_data():
     for col in numeric_columns:
         df[col] = pd.to_numeric(df[col], errors="coerce")
 
-    # Fill missing values within each country using nearby years.
     for col in numeric_columns:
         df[col] = df.groupby("country")[col].transform(
             lambda x: x.interpolate(limit_direction="both")
